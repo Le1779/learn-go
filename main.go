@@ -1,23 +1,20 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	router "learn-go/routers"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	server := gin.Default()
+	server := router.InitRouter()
 
-    server.LoadHTMLGlob("frontend/*")
+	server.LoadHTMLGlob("frontend/*")
+
 	server.NoRoute(func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Hello Gin",
-		})
-	})
-
-	server.GET("/api", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "This is Kevin.",
 		})
 	})
 
