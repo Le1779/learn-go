@@ -1,6 +1,7 @@
 package main
 
 import (
+	database "learn-go/database"
 	router "learn-go/routers"
 	"net/http"
 
@@ -17,6 +18,7 @@ func main() {
 			"title": "Hello Gin",
 		})
 	})
+	database.Setup()
 
 	server.Run(":8888")
 }

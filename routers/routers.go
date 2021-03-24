@@ -9,7 +9,7 @@ import (
 func InitRouter() *gin.Engine {
 	router := gin.Default()
 
-	r := router.Group("/v1")
+	r := router.Group("")
 	{
 		api.RegisterRouter(r)
 	}
