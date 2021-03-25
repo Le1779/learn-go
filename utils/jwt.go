@@ -15,12 +15,13 @@ var jwtSecret = []byte("Kevin Le Debugging.")
 
 func GenerateToken(id int) (string, error) {
 	nowTime := time.Now()
-	expireTime := nowTime.Add(3 * time.Hour)
+	expireTime := nowTime.Add(1 * time.Hour)
 
 	claims := Claims{
 		id,
 		jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
+			IssuedAt:  nowTime.Unix(),
 		},
 	}
 
