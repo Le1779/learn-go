@@ -2,14 +2,23 @@ package users
 
 import (
 	database "learn-go/database"
+	jwt "learn-go/utils"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Login(c *gin.Context) {
+	token, err := jwt.GenerateToken(12)
+	if err != nil {
+		c.JSON(200, gin.H{
+			"message": err,
+		})
+		return
+	}
+
 	c.JSON(200, gin.H{
-		"message": "This is Kevin Login.",
+		"message": token,
 	})
 }
 
